@@ -13,7 +13,9 @@ fi
 QT_ROOT_PATH=$1
 QT_VERSION=$2
 
-QT_BIN_DIR=${QT_ROOT_PATH}/${QT_VERSION}/gcc_64/bin
+QT_PATH=${QT_ROOT_PATH}/${QT_VERSION}
+QT_BIN_DIR=${QT_PATH}/gcc_64/bin
+
 export PATH=${QT_BIN_DIR}:${PATH}
 
 if [ ! -d "$QT_BIN_DIR" ]; then
@@ -27,7 +29,7 @@ fi
 echo "Install QtJsonSerializer libs"
 TAR_NAME=QtJsonSerializer.tar.xz
 curl -L -o ${TAR_NAME} https://github.com/Skycoder42/QtJsonSerializer/releases/download/3.1.0-2/build_gcc_64_${QT_VERSION}.tar.xz
-sudo tar -xJvf ${TAR_NAME} -C ${QT_ROOT_PATH}
+sudo tar -xJvf ${TAR_NAME} -C ${QT_PATH}
 
 
 # build QtAV libs
