@@ -1,2 +1,2 @@
-# qtdockerfiles
-Docker files for https://hub.docker.com/r/frostasm/qt/
+# qt5.2.1-desktop-gcc4.7.3
+This branch contains docker build file
