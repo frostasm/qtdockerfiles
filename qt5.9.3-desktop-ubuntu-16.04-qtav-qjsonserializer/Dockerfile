@@ -20,5 +20,5 @@ RUN sudo apt-get update && \
 COPY install-libs.sh /tmp/qt/
 
 RUN cd /tmp/qt/ && \
-    sudo /tmp/qt/install-libs.sh $QT_PATH $QT_VERSION left && \
+    sudo /tmp/qt/install-libs.sh $QT_PATH $QT_VERSION && \
     sudo rm -rf /tmp/qt
