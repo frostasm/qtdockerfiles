@@ -49,14 +49,13 @@ RUN apt update && apt full-upgrade -y && apt install -y --no-install-recommends 
 COPY extract-qt-installer.sh install-linuxdeployqt.sh install-additional-qt-libs.sh /tmp/qt/
 
 # Download & unpack Qt toolchains
-RUN curl -Lo /tmp/qt/installer.run "https://download.qt.io/official_releases/qt/$(echo "${QT_VERSION}" | cut -d. -f 1-2)/${QT_VERSION}/qt-opensource-linux-x64-${QT_VERSION}.run" \
-    && QT_CI_PACKAGES=qt.qt5.$(echo "${QT_VERSION}" | tr -d .).gcc_64 /tmp/qt/extract-qt-installer.sh /tmp/qt/installer.run "$QT_PATH" \
-    && find "$QT_PATH" -mindepth 1 -maxdepth 1 ! -name "${QT_VERSION}" -exec echo 'Cleaning Qt SDK: {}' \; -exec rm -r '{}' \;
-
 # Download & unpack QtJsonSerializer
 # Download & unpack linuxdeployqt
 # Clean
-RUN /tmp/qt/install-additional-qt-libs.sh "${QT_PATH}" "${QT_VERSION}" \
+RUN curl -Lo /tmp/qt/installer.run "https://download.qt.io/official_releases/qt/$(echo "${QT_VERSION}" | cut -d. -f 1-2)/${QT_VERSION}/qt-opensource-linux-x64-${QT_VERSION}.run" \
+    && QT_CI_PACKAGES=qt.qt5.$(echo "${QT_VERSION}" | tr -d .).gcc_64 /tmp/qt/extract-qt-installer.sh /tmp/qt/installer.run "$QT_PATH" \
+    && find "$QT_PATH" -mindepth 1 -maxdepth 1 ! -name "${QT_VERSION}" -exec echo 'Cleaning Qt SDK: {}' \; -exec rm -r '{}' \; \
+    && /tmp/qt/install-additional-qt-libs.sh "${QT_PATH}" "${QT_VERSION}" \
     && /tmp/qt/install-linuxdeployqt.sh "${QT_VERSION}" \
     && rm -rf /tmp/qt
 
