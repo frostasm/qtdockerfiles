@@ -1,6 +1,3 @@
-# Minimal docker container to build project
-# Image: rabits/qt:5.10-desktop
-
 FROM ubuntu:16.04
 MAINTAINER frostasm <frostasm@gmail.com>
 
