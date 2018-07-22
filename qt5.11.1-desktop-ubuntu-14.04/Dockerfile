@@ -15,7 +15,8 @@ ENV PATH $QT_DESKTOP/bin:$PATH
 #  * build-essential, pkg-config, libgl1-mesa-dev - basic Qt build requirements
 #  * gcc updated to version 5.x - support C++14 standard - https://gist.github.com/application2000/73fd6f4bf1be6600a2cf9f56315a2d91
 #  * libsm6, libice6, libxext6, libxrender1, libfontconfig1, libdbus-1-3 - dependencies of the Qt bundle run-file
-#  * libxi6, libgconf-2-4, libgtk-3-0, libx11-xcb1, libpq5 - dependencies of the linuxdeployqt
+#  * libxi6, libgconf-2-4, libgtk-3-0, libx11-xcb1, libpq5, file - dependencies of the linuxdeployqt
+
 RUN \
     apt-get update && apt full-upgrade -y \
     && apt-get install -y --no-install-recommends software-properties-common ca-certificates \
@@ -49,6 +50,7 @@ RUN \
         libgtk-3-0 \
         libx11-xcb1 \
         libpq5 \
+        file \
         \
     && apt-get -qq clean
 

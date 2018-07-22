@@ -21,7 +21,3 @@ chmod  755 -R ${INSTALL_PATH}
 rm ${APP_IMAGE}
 
 ln -s ${APP_RUN} /usr/bin/linuxdeployqt
-
-# remove unneeded dependencies from sqldrivers
-rm /opt/Qt/${QT_VERSION}/gcc_64/plugins/sqldrivers/libqsqlpsql.so
-rm /opt/Qt/${QT_VERSION}/gcc_64/plugins/sqldrivers/libqsqlmysql.so

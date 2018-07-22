@@ -9,8 +9,8 @@ RUN sudo apt-get install
 
 RUN sudo apt-get update && \
     sudo apt-get install -y --no-install-recommends \
-        libxi6 libgconf-2-4 libgtk-3-0 libx11-xcb1 libpq5 &&\
-    sudo apt-get -qq clean
+        libxi6 libgconf-2-4 libgtk-3-0 libx11-xcb1 libpq5 file \
+    && sudo apt-get -qq clean
 
 RUN cd /tmp/qt/ && \
     sudo /tmp/qt/install-linuxdeployqt.sh && \
