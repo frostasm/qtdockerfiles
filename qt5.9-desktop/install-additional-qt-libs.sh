@@ -1,11 +1,11 @@
-#!/bin/sh -e
+#!/bin/sh
 
 if [ $# -lt 2 ];
 then
     echo
-    echo "install-libs.sh path-to-qt-root-dir qt-version"
+    echo "install-additional-qt-libs.sh path-to-qt-root-dir qt-version"
     echo " - path-to-qt-root-dir => /opt/Qt"
-    echo " - qt-version => 5.9.3"
+    echo " - qt-version => 5.11.1"
     echo
     exit -1
 fi
@@ -25,15 +25,19 @@ if [ ! -d "$QT_BIN_DIR" ]; then
     exit -1
 fi
 
-# install QtJsonSerializer libs
+# Install QtJsonSerializer libs
 echo "Install QtJsonSerializer libs"
-TAR_NAME=QtJsonSerializer.tar.xz
-curl -L -o ${TAR_NAME} https://github.com/Skycoder42/QtJsonSerializer/releases/download/3.1.0-2/build_gcc_64_${QT_VERSION}.tar.xz
-sudo tar -xJvf ${TAR_NAME} -C ${QT_PATH}
+TAR_PATH=/tmp/qt/QtJsonSerializer.tar.xz
+curl -L -o ${TAR_PATH} https://github.com/Skycoder42/QtJsonSerializer/releases/download/3.1.0-2/build_gcc_64_5.9.3.tar.xz
+
+tar -xJvf ${TAR_PATH} -C ${QT_PATH}
 
 
 # build QtAV libs
 echo "Install QtAV libs"
+mkdir -p /tmp/qt/qtav
+cd /tmp/qt/qtav
+
 git clone https://github.com/wang-bin/QtAV.git
 cd QtAV
 git checkout -b build-branch 49ce5f8a0f0aee52e263da0581a4f66723543567
