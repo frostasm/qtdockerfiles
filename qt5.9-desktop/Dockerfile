@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER frostasm <frostasm@gmail.com>
 
-ARG QT_VERSION=5.9.5
+ARG QT_VERSION=5.9.6
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV QT_PATH /opt/Qt
