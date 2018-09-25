@@ -12,18 +12,3 @@ sudo dpkg -i --ignore-depends=libglib2.0-dev /tmp/qt/libthrift-dev_0.9.1_amd64.d
 
 rm -f /tmp/qt/libthrift0_0.9.1_amd64.deb
 rm -f /tmp/qt/libthrift-dev_0.9.1_amd64.deb
-
-echo "Install LimeReport libs"
-
-LIME_REPORT_SRC_DIR=/tmp/qt/build/LimeReport
-LIME_REPORT_BUILD_DIR=/tmp/qt/build/LimeReport
-
-git clone --depth=1 https://github.com/fralx/LimeReport.git ${LIME_REPORT_SRC_DIR}
-mkdir -p ${LIME_REPORT_BUILD_DIR}
-
-cd ${LIME_REPORT_BUILD_DIR}
-
-qmake CONFIG+=no_zint CONFIG+=no_build_translations ${LIME_REPORT_SRC_DIR}/limereport/limereport.pro
-make -j$(nproc)
-
-sudo make install

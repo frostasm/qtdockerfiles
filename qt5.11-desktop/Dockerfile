@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER frostasm <frostasm@gmail.com>
 
-ARG QT_VERSION=5.11.1
+ARG QT_VERSION=5.11.2
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV QT_PATH /opt/Qt
@@ -51,10 +51,13 @@ COPY extract-qt-installer.sh install-linuxdeployqt.sh install-additional-qt-libs
 # Download & unpack linuxdeployqt
 # Download & unpack QtJsonSerializer
 # Clean
+
 RUN curl -Lo /tmp/qt/installer.run "https://download.qt.io/official_releases/qt/$(echo "${QT_VERSION}" | cut -d. -f 1-2)/${QT_VERSION}/qt-opensource-linux-x64-${QT_VERSION}.run" \
-    && QT_CI_PACKAGES=qt.qt5.$(echo "${QT_VERSION}" | tr -d .).gcc_64,qt.qt5.$(echo "${QT_VERSION}" | tr -d .).qtnetworkauth,qt.qt5.$(echo "${QT_VERSION}" | tr -d .).qtremoteobjects,qt.qt5.$(echo "${QT_VERSION}" | tr -d .).qtwebglplugin,qt.qt5.$(echo "${QT_VERSION}" | tr -d .).qtscript /tmp/qt/extract-qt-installer.sh /tmp/qt/installer.run "$QT_PATH" \
+    && export QT_VER=$(echo "${QT_VERSION}" | tr -d .) \
+    && export QT_CI_PACKAGES=qt.qt5.$QT_VER.gcc_64,qt.qt5.$QT_VER.qtcharts,qt.qt5.$QT_VER.qtdatavis3d,qt.qt5.$QT_VER.qtpurchasing,qt.qt5.$QT_VER.qtvirtualkeyboard,qt.qt5.$QT_VER.qtwebengine,qt.qt5.$QT_VER.qtnetworkauth,qt.qt5.$QT_VER.qtremoteobjects,qt.qt5.$QT_VER.qtwebglplugin,qt.qt5.$QT_VER.qtscript \
+    && /tmp/qt/extract-qt-installer.sh /tmp/qt/installer.run "$QT_PATH" \
     && find "$QT_PATH" -mindepth 1 -maxdepth 1 ! -name "${QT_VERSION}" -exec echo 'Cleaning Qt SDK: {}' \; -exec rm -r '{}' \; \
-    && /tmp/qt/install-linuxdeployqt.sh "${QT_VERSION}" \
+    && /tmp/qt/install-linuxdeployqt.sh \
     && /tmp/qt/install-additional-qt-libs.sh "${QT_PATH}" "${QT_VERSION}" \
     && rm -rf /tmp/qt
 

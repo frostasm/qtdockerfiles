@@ -1,7 +1,7 @@
-FROM frostasm/qt:qt5.11.1-desktop
+FROM frostasm/qt:qt5.11.2-desktop
 MAINTAINER frostasm <frostasm@gmail.com>
 
-ARG QT_VERSION=5.11.1
+ARG QT_VERSION=5.11.2
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV QT_PATH /opt/Qt

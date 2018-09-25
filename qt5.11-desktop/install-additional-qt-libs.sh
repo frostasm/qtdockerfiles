@@ -28,8 +28,25 @@ fi
 # Install QtJsonSerializer libs
 echo "Install QtJsonSerializer libs"
 TAR_PATH=/tmp/QtJsonSerializer.tar.xz
-curl -L -o ${TAR_PATH} https://github.com/Skycoder42/QtJsonSerializer/releases/download/3.1.2-3/build_gcc_64_${QT_VERSION}.tar.xz
+curl -L -o ${TAR_PATH} https://github.com/Skycoder42/QtJsonSerializer/releases/download/3.1.2-4/build_gcc_64_${QT_VERSION}.tar.xz
+
 
 tar -xJvf ${TAR_PATH} -C ${QT_PATH}
 
 rm ${TAR_PATH}
+
+
+echo "Install LimeReport libs"
+
+LIME_REPORT_SRC_DIR=/tmp/qt/build/LimeReport
+LIME_REPORT_BUILD_DIR=/tmp/qt/build/LimeReport
+
+git clone --depth=1 https://github.com/fralx/LimeReport.git ${LIME_REPORT_SRC_DIR}
+mkdir -p ${LIME_REPORT_BUILD_DIR}
+
+cd ${LIME_REPORT_BUILD_DIR}
+
+qmake CONFIG+=no_zint CONFIG+=no_build_translations TOP_BUILD_DIR=$(pwd) ${LIME_REPORT_SRC_DIR}/limereport/limereport.pro
+make -j$(nproc)
+
+make install

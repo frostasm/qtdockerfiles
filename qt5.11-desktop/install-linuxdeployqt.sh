@@ -1,7 +1,5 @@
 #!/bin/sh
 
-QT_VERSION=$1
-
 export DEBIAN_FRONTEND=noninteractive
 
 INSTALL_PATH=/opt/linuxdeployqt
