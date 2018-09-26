@@ -1,4 +1,4 @@
-FROM frostasm/qt:qt5.11.2-desktop
+FROM frostasm/qt:qt5.11-desktop
 MAINTAINER frostasm <frostasm@gmail.com>
 
 ARG QT_VERSION=5.11.2
