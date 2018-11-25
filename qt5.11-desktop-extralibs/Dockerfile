@@ -13,6 +13,8 @@ RUN sudo apt update \
     libpoppler-qt5-dev \
     libopencv-dev \
     libzbar-dev \
+    libkf5solid-dev \
+    libkf5archive-dev \
     && sudo apt-get -qq clean
 
 
