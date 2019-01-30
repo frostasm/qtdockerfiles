@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 MAINTAINER frostasm <frostasm@gmail.com>
 
 ARG QT_VERSION=5.12.0
