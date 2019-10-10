@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 MAINTAINER frostasm <frostasm@gmail.com>
 
-ARG QT_VERSION=5.9.7
+ARG QT_VERSION=5.9.8
 ARG QT_DOWNLOAD_BASE_URL=https://download.qt.io
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -51,6 +51,8 @@ RUN apt update && apt full-upgrade -y && apt install -y --no-install-recommends 
     libx11-xcb1 \
     libpq5 \
     file \
+    \
+    libopencv-dev \
     \
     && apt-get -qq clean
 

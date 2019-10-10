@@ -9,7 +9,8 @@ APP_IMAGE=${INSTALL_PATH}/linuxdeployqt
 APP_RUN=${INSTALL_PATH}/squashfs-root/AppRun
 
 mkdir -p ${INSTALL_PATH}
-curl -L -o ${APP_IMAGE} https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+curl -L -o ${APP_IMAGE} https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
+
 
 chmod +x ${APP_IMAGE}
 
