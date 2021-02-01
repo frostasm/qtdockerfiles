@@ -1,5 +1,19 @@
 # Qt CI
 
+## qt5.12.10-ubuntu20.04-gcc9.3.0
+
+- ubuntu 20:04
+- gcc 9.3.0
+- Qt 5.12.10
+- libboost-all-dev
+- libopencv
+- [QtJsonSerializer](https://github.com/Skycoder42/QtJsonSerializer)
+- [linuxdeployqt](https://github.com/probonopd/linuxdeployqt)
+- [libpoppler-qt5](https://people.freedesktop.org/~aacid/docs/qt5/)
+- [libzbar](http://zbar.sourceforge.net/)
+- [LimeReport](https://github.com/fralx/LimeReport)
+
+
 ## qt5.12-desktop
 
 - ubuntu 16:04
