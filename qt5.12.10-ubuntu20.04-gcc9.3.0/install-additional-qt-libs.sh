@@ -40,8 +40,8 @@ mkdir -p "${TMP_INSTALL_DIR}"
 CPU_COUNT=$(nproc --all --ignore=1)
 
 
-#-------------------------------- QtJsonSerializer --------------------------------
-if [[ "${QTAV_INSTALL}" == "yes" ]]; then
+#-------------------------------- Skycoder42 / QtJsonSerializer --------------------------------
+if [[ "${QTJSONSERIALIZER_INSTALL}" == "yes" ]]; then
     echo "Install QtJsonSerializer libs"
 
     if [[ -z "${QTJSONSERIALIZER_VERSION}" || -z "${QTJSONSERIALIZER_QT_VERSION}" ]]; then
@@ -52,8 +52,21 @@ if [[ "${QTAV_INSTALL}" == "yes" ]]; then
     TAR_PATH="${TMP_INSTALL_DIR}/QtJsonSerializer.tar.xz"
     curl -L -o "${TAR_PATH}" "https://github.com/Skycoder42/QtJsonSerializer/releases/download/${QTJSONSERIALIZER_VERSION}/build_gcc_64_${QTJSONSERIALIZER_QT_VERSION}.tar.xz"
     tar -xJvf "${TAR_PATH}" -C "${QT_PATH}"
-fi
+fi # "${QTJSONSERIALIZER_INSTALL}" == "yes" ]];
 
+#--------------------------------  Skycoder42 / QtService  --------------------------------
+if [[ "${QTSERVICE_INSTALL}" == "yes" ]]; then
+    echo "Install QtService libs"
+
+    if [[ -z "${QTSERVICE_VERSION}" || -z "${QTSERVICE_QT_VERSION}" ]]; then
+        echo "QtService error: QTSERVICE_VERSION and QTSERVICE_QT_VERSION variables not set!"
+        exit 1
+    fi
+
+    TAR_PATH="${TMP_INSTALL_DIR}/QtService.tar.xz"
+    curl -L -o "${TAR_PATH}" "https://github.com/Skycoder42/QtService/releases/download/${QTSERVICE_VERSION}/qtservice_gcc_64_${QTSERVICE_QT_VERSION}.tar.xz"
+    tar -xJvf "${TAR_PATH}" -C "${QT_PATH}"
+fi # "${QTSERVICE_INSTALL}" == "yes" ]];
 
 #------------------------------ QtAV ----------------------------------------
 if [[ "${QTAV_INSTALL}" == "yes" ]]; then

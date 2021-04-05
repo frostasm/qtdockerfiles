@@ -113,6 +113,10 @@ ARG LINUXDEPLOYQT_VERSION=6 \
     QTJSONSERIALIZER_VERSION=3.2.0-2 \
     QTJSONSERIALIZER_QT_VERSION=5.12.0 \
     \
+    QTSERVICE_INSTALL=yes \
+    QTSERVICE_VERSION=1.1.1 \
+    QTSERVICE_QT_VERSION=5.12.1 \
+    \
     QTAV_INSTALL=yes \
     QTAV_GIT_COMMIT=49ce5f8a0f0aee52e263da0581a4f66723543567 \
     QTAV_GIT_TAG= \
@@ -137,4 +141,7 @@ RUN groupadd -r user && useradd --create-home --gid user user && echo 'user ALL=
 
 USER user
 WORKDIR /home/user
-ENV HOME /home/user
+ENV HOME /home/user \
+    QT_PLUGIN_PATH=/opt/Qt/5.12.10/gcc_64/plugins/ \
+    QML2_IMPORT_PATH=/opt/Qt/5.12.10/gcc_64/qml/
+
